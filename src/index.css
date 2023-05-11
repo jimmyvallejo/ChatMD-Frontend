@@ -5,11 +5,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ font-family: 'Montserrat', sans-serif;
 }
 
 code {
@@ -41,4 +37,22 @@ overflow-y: scroll;
     flex-direction: column;
     overflow: scroll;
   }
+}
+
+.profilepic {
+  border-radius: 100%;
+  width: 218px;
+  height: 207.5px;
+ 
+}
+
+
+.profilepicdiv {
+   border-radius: 100%;
+  width: 220px;
+  height: 210px;
+  margin-top: 180px;
+  margin-left: 70px;
+  background-color: white;
+  border: 1px solid black;
 }
