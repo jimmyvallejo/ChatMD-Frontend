@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
     localStorage.clear();
     console.log("we've logged out");
     setAuthUser(null);
-    navigate("/login");
+    navigate("/");
   };
 
   useEffect(() => {

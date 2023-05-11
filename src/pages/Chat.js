@@ -47,6 +47,7 @@ const Chat = () => {
       };
       setConversation((prevState) => [...prevState, messageObject]);
       setMessage("");
+      console.log("AuthUser:", authUser)
     } catch {
       console.log("Error sending message");
     }
@@ -54,6 +55,7 @@ const Chat = () => {
 
   useEffect(() => {
     console.log(conversation);
+    console.log(authUser)
   }, [conversation]);
 
   return (
