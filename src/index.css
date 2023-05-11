@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +15,30 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+
+
+
+
+
+
+.convoContain {
+border: 1px solid black;
+border-radius: 8px;
+width: 60vw;
+height: 65vh;
+overflow-y: scroll;
+}
+
+@media only screen and (max-width: 1000px) {
+  .convoContain {
+    width: 80vw;
+    height: 70vh;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    overflow: scroll;
+  }
 }
