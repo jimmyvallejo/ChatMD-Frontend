@@ -77,29 +77,33 @@ const Profile = () => {
           <h1 className="text-3xl mt-5 mb-5">Profile</h1>
         </div>
         <div className=" h-60 bg-gray-200 flex rounded-tl-full ">
-          <div>
-            <div className="flex">
-              <div className="profilepicdiv flex lg:flex-row flex-col items-center">
-                <img
-                  className="profilepic"
-                  src="https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg"
-                ></img>
-                <h1 className="ml-7 text-center text-xl">Jimmy Vallejo</h1>
-                <div className="flex lg:ml-60 lg:pl-60">
-                  <button className="lg:ml-40 rounded-md border-cyan-800 border-2 text-cyan-700 p-1 hover:bg-cyan-800 hover:text-white">
-                    Cancel
-                  </button>
-                  <button className="ml-10 rounded-md border-red-300 border-2 text-red-700 p-1 hover:bg-red-300 hover:text-white">
-                    {" "}
-                    Delete
-                  </button>
-                </div>
+          <div className="flex">
+            <div className="profilepicdiv flex lg:flex-row flex-col items-center">
+              <img
+                className="profilepic"
+                src="https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg"
+              ></img>
+              <h1 className="ml-7 text-center text-xl">Jimmy Vallejo</h1>
+              <div className="flex lg:ml-60 lg:pl-60">
+                <button className="lg:ml-40 rounded-md border-cyan-800 border-2 text-cyan-700 p-1 hover:bg-cyan-800 hover:text-white">
+                  Cancel
+                </button>
+                <button className="ml-10 rounded-md border-red-300 border-2 text-red-700 p-1 hover:bg-red-300 hover:text-white">
+                  {" "}
+                  Delete
+                </button>
               </div>
-
-              <div></div>
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex justify-around mt-60">
+        <h1 className="mr-10">Username:</h1>
+        <div className="border-2 border-black rounded-md w-40">
+          <h1>JimmyV</h1>
+        </div>
+
+        <input></input>
       </div>
       <div className={`flex flex-col justify-center items-center pt-40`}>
         <div
