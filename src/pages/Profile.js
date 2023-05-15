@@ -7,6 +7,7 @@ const Profile = () => {
   const [term, setTerm] = useState("");
   const [results, setResults] = useState([]);
   const [conditions, setConditions] = useState([]);
+  const [isDisabled, setDisabled] = useState(true);
 
   let { id } = useParams();
 
@@ -70,6 +71,11 @@ const Profile = () => {
     setTerm("");
   };
 
+
+    const handleDisable = () => {
+        setDisabled(!isDisabled);
+    };
+
   return (
     <div>
       <div className="pt-20 w-4/6  border-black m-auto">
@@ -85,10 +91,10 @@ const Profile = () => {
               ></img>
               <h1 className="ml-7 text-center text-xl">Jimmy Vallejo</h1>
               <div className="flex lg:ml-60 lg:pl-60">
-                <button className="lg:ml-40 rounded-md border-cyan-800 border-2 text-cyan-700 p-1 hover:bg-cyan-800 hover:text-white">
-                  Cancel
+                <button onClick={handleDisable} className={isDisabled ? `lg:ml-40 rounded-md border-cyan-800 border-2 text-cyan-700 p-1 hover:bg-cyan-800 hover:text-white` : `lg:ml-40 rounded-md border-red-300 border-2 text-red-700 p-1 hover:bg-red-300 hover:text-white` }>
+                  {isDisabled ? "Update" : "Cancel"}
                 </button>
-                <button className="ml-10 rounded-md border-red-300 border-2 text-red-700 p-1 hover:bg-red-300 hover:text-white">
+                <button className="ml-10 rounded-md border-red-700 border-2 text-red-700 p-1 hover:bg-red-800 hover:text-white">
                   {" "}
                   Delete
                 </button>
@@ -96,15 +102,27 @@ const Profile = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex justify-around mt-60">
-        <h1 className="mr-10">Username:</h1>
-        <div className="border-2 border-black rounded-md w-40">
-          <h1>JimmyV</h1>
+        <div className="flex justify-around mt-60  border-b-2 border-gray-200 w-6/6 pb-4">
+          <div className="flex">
+            <h1 className="mr-5">Username:</h1>
+            <h1>JimmyV</h1>
+          </div>
+          <div className="border-2 border-black rounded-md p-1 flex ">
+            
+              <form className="p-1" >
+                <label className="mr-1" for="html">
+                  Edit Username:
+                </label>
+                <input
+                  className="border-2 border-black rounded-md pl-1"
+                  type="text" disabled={isDisabled} placeholder={isDisabled ? "JimmyV" : ""}
+                ></input>
+                <button className="ml-2 mr-1" disabled={isDisabled}>Submit</button>
+              </form>
+          </div>
         </div>
-
-        <input></input>
       </div>
+
       <div className={`flex flex-col justify-center items-center pt-40`}>
         <div
           className={results.length > 0 ? "border-2 border-black w-1/6" : ""}
