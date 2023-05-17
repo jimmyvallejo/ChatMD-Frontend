@@ -6,13 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from './context/auth.context';
 import { ChatProvider } from './context/chat.context';
+import { AudioProvider } from './context/audio.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <AuthProvider>
       <ChatProvider>
-        <App />
+        <AudioProvider>
+          <App />
+        </AudioProvider>
       </ChatProvider>
     </AuthProvider>
   </BrowserRouter>

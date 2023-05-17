@@ -21,11 +21,30 @@ code {
 
 
 .convoContain {
-border: 1px solid black;
-border-radius: 8px;
-width: 60vw;
-height: 65vh;
-overflow-y: scroll;
+  border-radius: 15px;
+  width: 50vw;
+  height: 65vh;
+  overflow-y: scroll;
+  scrollbar-color: #c7cfcb #e0e0e0;
+  scrollbar-width: thin;
+}
+
+.convoContain::-webkit-scrollbar {
+  width: 8px;
+  background-color: #c7cfcb;
+  border-radius: 10px;
+  height: 90%;
+}
+
+.convoContain::-webkit-scrollbar-track {
+  background: #c7cfcb;
+  height: 90%;
+}
+
+.convoContain::-webkit-scrollbar-thumb {
+  background-color: #c7cfcb;
+  border-radius: 10px;
+  height: 90%;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -36,23 +55,49 @@ overflow-y: scroll;
     margin: auto;
     flex-direction: column;
     overflow: scroll;
+
   }
 }
 
+
+
 .profilepic {
   border-radius: 100%;
-  width: 218px;
+  width: 215px !important;
   height: 207.5px;
  
+}
+
+@media only screen and (max-width: 1000px) {
+  .profilepic {
+    width: 100% !important;
+    min-height: 100%;
+    
+  }
 }
 
 
 .profilepicdiv {
    border-radius: 100%;
   width: 220px;
-  height: 210px;
+  height: 215px;
   margin-top: 180px;
   margin-left: 70px;
   background-color: white;
   border: 1px solid black;
+
+}
+
+@media only screen and (max-width: 1000px) {
+  .profilepicdiv  {
+    width: 160px !important;
+    height: 150px !important;
+    margin-top: 70px !important;
+    border-radius: 100%;
+  }
+}
+
+.profileHeader {
+    background-image: url("../public/header.png");
+    background-size: cover;
 }
