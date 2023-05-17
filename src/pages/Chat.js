@@ -5,6 +5,9 @@ import { AuthContext } from "../context/auth.context";
 import { ChatContext } from "../context/chat.context";
 import { AudioContext } from "../context/audio.context";
 import { Comment } from "react-loader-spinner";
+import SearchBar from "../components/Searchbar";
+import ChatScreen from "../components/ChatScreen";
+import ChatInputs from "../components/ChatInputs";
 
 const Chat = () => {
   const [conditions, setConditions] = useState([]);
@@ -118,6 +121,7 @@ const Chat = () => {
   };
 
   useEffect(() => {
+    if(authUser)
     conditionsEdit();
   }, [authUser]);
 
@@ -147,7 +151,9 @@ useEffect(() => {
     const searchQuery = query.toLowerCase();
 
     filtered = conversation.filter((elem) => {
-      const chatMD = elem.chatMD ? elem.chatMD.toLowerCase() : "";
+      console.log(elem)
+      console.log(query)
+      const chatMD = elem.ChatMD ? elem.ChatMD.toLowerCase() : "";
       const user = elem.User ? elem.User.toLowerCase() : "";
 
       return chatMD.includes(searchQuery) || user.includes(searchQuery);
@@ -160,114 +166,30 @@ useEffect(() => {
 }, [query, conversation]);
 
   return (
-    <div className="flex flex-col justify-around max-h-screen h-screen items-center ">
-      <div className="flex flex-col items-center mt-20 pt-5 mb-5 lg:mb-5">
-        {/* <img src="/robot.png" className="w-30 h-20 font-semibold"></img> */}
-        <h1 className="mt-1 lg:mt-3 mb-3 font-semibold text-3xl lg:text-5xl">
-          <span className="text-blue-400">Chat</span>
-          <span className="text-red-300">MD</span>
-        </h1>
-        <div>
-          <input
-            id="input-with-image"
-            type="text"
-            className="border-slate-400 border-2 rounded-md"
-            placeholder="Search Conversation..."
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-          />
+    <div className="flex w-screen">
+      <div className="mt-20 w-1/6 border-r-2 border-black">
+        <SearchBar query={query} setQuery={setQuery} />
+        <h3 className="text-sm ml-2 mt-5 text-slate-500">Archived Conversations</h3>
+        <div className="w-full h-20 border-slate-500 border-t-2 border-b-2 flex items-center">
+         <img className="w-9 ml-3" src="/conversation.png"></img>
+         <h1 className="ml-3 text-slate-600">I have a headache...</h1>
         </div>
       </div>
-
-      <div
-        ref={divRef}
-        className="convoContain flex flex-col bg-blue-200 bg-opacity-20 "
-      >
-        {displayedConversation.map((elem, index) => {
-          return (
-            <div
-              key={index}
-              className="text-left flex flex-col items-center lg:mt-5 mb-4"
-            >
-              <div className="w-4/5 lg:w-3/5 flex flex-col lg:ml-2">
-                {elem.User && (
-                  <div className="bg-slate-200 bg-opacity-50 p-4 border-slate-200 rounded-xl">
-                    <p className=" leading-8">
-                      <span className="text-blue-500">{authUser.name}</span>
-                      {` : ${elem.User}`}
-                    </p>
-                  </div>
-                )}
-                <div className="bg-red-200 bg-opacity-50 mt-10 mb-3 p-5 border-red-200 rounded-xl">
-                  <p className=" leading-8">
-                    <span className="text-red-500">ChatMD</span>
-                    {` : ${elem.ChatMD}`}
-                  </p>
-                </div>
-              </div>
-              {loading && index === conversation.length - 1 && (
-                <div className="mt-5 mb-20 mr-10">
-                  <Comment
-                    visible={true}
-                    height="80"
-                    width="80"
-                    ariaLabel="comment-loading"
-                    wrapperStyle={{}}
-                    wrapperClass="comment-wrapper"
-                    color="#fff"
-                    backgroundColor="#AEE2FF"
-                  />
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="lg:w-2/3 flex items-center flex-col">
-        <div className="mb-5 mt-5 lg:mt-3 pt-2 ">
-          <button
-            onClick={() => handlePreExisiting()}
-            className="text-xl hover:text-red-500"
-          >
-            Include pre-existing conditions?
-          </button>
-        </div>
-        <div className="w-full lg:w-2/3 flex items-center justify-center mb-3">
-          {!recording && (
-            <img
-              onClick={() => startRecording()}
-              className="lg:w-12 w-9 cursor-pointer"
-              src="/rec-button.png"
-            ></img>
-          )}
-          {recording && (
-            <img
-              onClick={() => stopRecording()}
-              className="w-12 cursor-pointer"
-              src="/stop-button.png"
-            ></img>
-          )}
-          <form
-            onSubmit={handleSubmit}
-            className="flex items-center w-full ml-2 lg:ml-5"
-          >
-            <textarea
-              className="border-2 border-black rounded lg:w-full pb-10 pl-1"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="How could I help you today?"
-              rows="1"
-              style={{ resize: "none" }}
-            ></textarea>
-            <button
-              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-1.5 lg:py-2 lg:px-4 lg:py-2 px-1 lg:px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded lg:h-2/3 ml-2"
-              type="submit"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
+      <div className="flex flex-col justify-center max-h-screen h-screen items-center w-5/6">
+        
+        <ChatScreen
+          divRef={divRef}
+          displayedConversation={displayedConversation}
+          conversation={conversation}
+          authUser={authUser}
+          loading={loading}
+        />
+        <ChatInputs
+          handlePreExisiting={handlePreExisiting}
+          handleSubmit={handleSubmit}
+          message={message}
+          setMessage={setMessage}
+        />
       </div>
     </div>
   );
