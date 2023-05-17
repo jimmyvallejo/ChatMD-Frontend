@@ -7,6 +7,7 @@ const ChatContext = createContext();
 
 const ChatProvider = ({ children }) => {
   const [conversation, setConversation] = useState([]);
+   const [displayedConversation, setDisplayedConversation] = useState([]);
   const [initial, setInitial] = useState(null);
    const [message, setMessage] = useState("");
   const [windowSize, setWindowSize] = useState({
@@ -31,7 +32,7 @@ const ChatProvider = ({ children }) => {
 
   return (
     <ChatContext.Provider
-      value={{ conversation, setConversation, initial, setInitial, windowSize, message, setMessage }}
+      value={{ conversation, setConversation, initial, setInitial, windowSize, message, setMessage, displayedConversation, setDisplayedConversation }}
     >
       {children}
     </ChatContext.Provider>

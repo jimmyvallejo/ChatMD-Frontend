@@ -144,7 +144,15 @@ const Profile = () => {
 
   const scrollToBottom = () => {
     window.scrollTo({
-      top: document.documentElement.scrollHeight,
+      top: document.documentElement.scrollHeight -50,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+
+    const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
       left: 0,
       behavior: "smooth",
     });
@@ -157,11 +165,11 @@ const Profile = () => {
   }, [isDisabled]);
 
   return (
-    <div>
-      <div className="pt-20 w-4/6  border-black m-auto">
+    <div className="w-screen lg:w-auto">
+      <div className="pt-20 w-4/6 lg:w-5/6 border-black m-auto">
         <div className="flex border-b-2 border-gray-200 mb-3 items-center">
           <img className="w-10 h-10" src="/medicine.png"></img>
-          <h1 className="text-3xl mt-5 mb-5 ml-3">Profile</h1>
+          <h1 className="text-3xl mt-5 mb-5 ml-3 text-slate-600">Profile</h1>
         </div>
         <div className=" h-60 bg-gray-200 flex rounded-tl-full profileHeader ">
           <div className="flex">
@@ -175,12 +183,12 @@ const Profile = () => {
               {windowSize > 600 && (
                 <h1 className="ml-7 text-center text-xl">{authUser.name}</h1>
               )}
-              <div className="flex mr-10 mt-20 lg:mt-0 lg:mr-0 lg:ml-60 lg:pl-60">
+              <div className="flex mr-6 mt-20 lg:mt-0 lg:mr-0 lg:ml-60 lg:pl-60">
                 <button
                   onClick={handleDisable}
                   className={
                     isDisabled
-                      ? `lg:ml-40 rounded-md border-cyan-800 border-2 text-cyan-700 p-1 hover:bg-cyan-800 hover:text-white `
+                      ? `lg:ml-40 rounded-md border-blue-400 border-2 text-cyan-700 p-1 hover:bg-blue-500 hover:text-white `
                       : `lg:ml-40 rounded-md border-red-300 border-2 text-red-700 p-1 hover:bg-red-300 hover:text-white`
                   }
                 >
@@ -188,7 +196,7 @@ const Profile = () => {
                 </button>
                 <button
                   onClick={() => handleProfileDelete()}
-                  className="ml-10 rounded-md border-red-700 border-2 text-red-700 p-1 hover:bg-red-800 hover:text-white mr-5"
+                  className="ml-10 rounded-md border-red-400 border-2 text-red-700 p-1 hover:bg-red-500 hover:text-white mr-5"
                 >
                   {" "}
                   Delete
@@ -200,7 +208,7 @@ const Profile = () => {
 
         <div className={`flex flex-col items-center mt-40`}>
           {!isDisabled && (
-            <div className=" mb-20 flex flex-col">
+            <div className=" lg:mb-20 flex flex-col">
               <h1 className="text-xl font-bold">Pending Changes:</h1>
               <div className="ml-2 flex-flex-col ">
                 <div className="flex flex-col mt-6 w-50 -ml-1">
@@ -278,8 +286,9 @@ const Profile = () => {
           )}
 
           {isDisabled && (
-            <h1 className=" lg:mt-5 lg:mt-0 lg:text-2xl mb-5 font-semibold">
-              Add Conditions/Ailments
+            <h1 className=" lg:mt-5 lg:mt-0 lg:text-2xl mb-5 font-semibold text-slate-500">
+              Add <span className="text-blue-400">Conditions</span>
+              <span className="text-red-400">/Ailments</span>
             </h1>
           )}
           {isDisabled && (
@@ -305,7 +314,7 @@ const Profile = () => {
           )}
           {isDisabled && (
             <input
-              className="placeholder-gray-500  border-2 border-black rounded-md pl-1  mt-5"
+              className="placeholder-gray-500  border-2 border-slate-400 rounded-md pl-1  mt-5"
               type="text"
               onChange={handleChange}
               placeholder="Search Conditions..."
@@ -313,7 +322,7 @@ const Profile = () => {
           )}
           {isDisabled && (
             <div className="flex flex-row items-center justify-center grow">
-              <div className="border-2 border-black mb-5 mt-4 px-2  flex flex-row max-w-2xl mr-1 flex-wrap">
+              <div className="border-2 border-slate-400 mb-5 mt-4 px-2  flex flex-row max-w-2xl mr-1 flex-wrap">
                 {conditions.length > 0 ? (
                   conditions.map((condition) => {
                     return (
@@ -350,7 +359,7 @@ const Profile = () => {
             </div>
           )}
         </div>
-        <div className="flex flex-col lg:flex-row justify-around   lg:items-normal mt-30 pt-20  border-b-2 border-gray-200 w-6/6 pb-4">
+        <div className="flex flex-col lg:flex-row justify-around   lg:items-normal mt-30 pt-20  border-b-2 border-gray-200 w-6/6 pb-4 text-slate-700">
           <div className="flex  lg:flex-row  lg:w-60 mb-5 lg:mb-0">
             <h1 className="mr-5">Username:</h1>
             {authUser && <h1>{authUser.username}</h1>}
@@ -375,7 +384,7 @@ const Profile = () => {
             <img className="w-5 h-5 mb-1 lg:mb-0" src="/user.png"></img>
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row justify-around items-center  lg:items-normal lg:mt-30 pt-10 lg:pt-20  border-b-2 border-gray-200 w-6/6 pb-4">
+        <div className="flex flex-col lg:flex-row justify-around items-center  lg:items-normal lg:mt-30 pt-10 lg:pt-20  border-b-2 border-gray-200 w-6/6 pb-4 text-slate-700">
           <div className="flex w-60 pb-5 lg:pb-0">
             <h1 className="mr-5 ml-8">Email:</h1>
             {authUser && <h1>{authUser.email}</h1>}
@@ -400,7 +409,7 @@ const Profile = () => {
             <img className="w-5 h-5 mb-1 lg:mb-0" src="/mail.png"></img>
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row justify-around items-center  lg:items-normal lg:mt-30 pt-10 lg:pt-20  border-b-2 border-gray-200 w-6/6 pb-4">
+        <div className="flex flex-col lg:flex-row justify-around items-center  lg:items-normal lg:mt-30 pt-10 lg:pt-20  border-b-2 border-gray-200 w-6/6 pb-4 text-slate-700">
           <div className="flex w-60 pb-5 lg:pb-0">
             <h1 className="mr-5">Password:</h1>
             <h1>**************</h1>
@@ -425,7 +434,7 @@ const Profile = () => {
             <img className="w-5 h-5 mb-1 lg:mb-0" src="/padlock.png"></img>
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row justify-around items-center  lg:items-normal lg:mt-30 pt-10 lg:pt-20   border-b-2 border-gray-200 w-6/6 pb-4">
+        <div className="flex flex-col lg:flex-row justify-around items-center  lg:items-normal lg:mt-30 pt-10 lg:pt-20   border-b-2 border-gray-200 w-6/6 pb-4 text-slate-700">
           <div className="flex w-60 pb-5 lg:pb-0">
             <h1 className="mr-5 ml-7">Name:</h1>
             {authUser && <h1>{authUser.name}</h1>}
@@ -449,6 +458,13 @@ const Profile = () => {
             </form>
             <img className="w-5 h-5 mb-1 lg:mb-0" src="/id-card.png"></img>
           </div>
+        </div>
+        <div className="flex flex-col items-center justify-center mt-5 mb-5">
+          <img
+            onClick={scrollToTop}
+            className="w-12 cursor-pointer"
+            src="/up.png"
+          ></img>
         </div>
       </div>
     </div>

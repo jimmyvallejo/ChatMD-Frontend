@@ -4,27 +4,36 @@ import { useState, useEffect, useContext, useRef } from "react";
 import { AuthContext } from "../context/auth.context";
 import { ChatContext } from "../context/chat.context";
 import { AudioContext } from "../context/audio.context";
-import { Comment } from "react-loader-spinner"
+import { Comment } from "react-loader-spinner";
 
 const Chat = () => {
- 
   const [conditions, setConditions] = useState([]);
-  const [loading, setLoading] = useState(null)
+  const [loading, setLoading] = useState(null);
+  const [query, setQuery] = useState("");
 
   const divRef = useRef(null);
 
   const { authUser } = useContext(AuthContext);
 
-  const { conversation, setConversation, initial, setInitial, message, setMessage } =
-    useContext(ChatContext);
+  const {
+    conversation,
+    setConversation,
+    initial,
+    setInitial,
+    message,
+    setMessage,
+    displayedConversation,
+    setDisplayedConversation,
+  } = useContext(ChatContext);
 
-    const {response, recording, startRecording, stopRecording } = useContext(AudioContext)
+  const { response, recording, startRecording, stopRecording } =
+    useContext(AudioContext);
 
   useEffect(() => {
     if (!initial) {
       const handleMount = async () => {
         try {
-          setLoading(true)
+          setLoading(true);
           const chat = await axios.post(`${baseUrl}/chat`, {
             message: `Address me as ${authUser.name} I need help with an ailment or illness bothering me, ask me about my symptoms or where im experiencing pain`,
           });
@@ -32,6 +41,10 @@ const Chat = () => {
             ChatMD: chat.data.ChatMD.content,
           };
           setConversation((prevState) => [...prevState, messageObject]);
+          setDisplayedConversation((prevState) => [
+            ...prevState,
+            messageObject,
+          ]);
           setMessage("");
           setInitial(true);
           setLoading(false);
@@ -54,6 +67,7 @@ const Chat = () => {
         ChatMD: chat.data.ChatMD.content,
       };
       setConversation((prevState) => [...prevState, messageObject]);
+      setDisplayedConversation((prevState) => [...prevState, messageObject]);
       setMessage("");
       setLoading(false);
       console.log("AuthUser:", authUser);
@@ -93,6 +107,7 @@ const Chat = () => {
         ChatMD: chat.data.ChatMD.content,
       };
       setConversation((prevState) => [...prevState, messageObject]);
+      setDisplayedConversation((prevState) => [...prevState, messageObject]);
       setMessage("");
       setLoading(false);
       console.log("AuthUser:", authUser);
@@ -119,27 +134,60 @@ const Chat = () => {
     scrollToBottom();
   }, [conversation, loading]);
 
-    useEffect(() => {
-      if (recording === false){
+  useEffect(() => {
+    if (recording === false) {
       setMessage(response);
-      }
-    }, [recording]);
+    }
+  }, [recording]);
+
+useEffect(() => {
+  let filtered;
+
+  if (query) {
+    const searchQuery = query.toLowerCase();
+
+    filtered = conversation.filter((elem) => {
+      const chatMD = elem.chatMD ? elem.chatMD.toLowerCase() : "";
+      const user = elem.User ? elem.User.toLowerCase() : "";
+
+      return chatMD.includes(searchQuery) || user.includes(searchQuery);
+    });
+  } else {
+    filtered = [...conversation];
+  }
+
+  setDisplayedConversation(filtered);
+}, [query, conversation]);
 
   return (
     <div className="flex flex-col justify-around max-h-screen h-screen items-center ">
-      <div>
-        <h1 className="text-3xl mt-20 pt-5 font-semibold">AI MD</h1>
+      <div className="flex flex-col items-center mt-20 pt-5 mb-5 lg:mb-5">
+        {/* <img src="/robot.png" className="w-30 h-20 font-semibold"></img> */}
+        <h1 className="mt-1 lg:mt-3 mb-3 font-semibold text-3xl lg:text-5xl">
+          <span className="text-blue-400">Chat</span>
+          <span className="text-red-300">MD</span>
+        </h1>
+        <div>
+          <input
+            id="input-with-image"
+            type="text"
+            className="border-slate-400 border-2 rounded-md"
+            placeholder="Search Conversation..."
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+          />
+        </div>
       </div>
 
       <div
         ref={divRef}
         className="convoContain flex flex-col bg-blue-200 bg-opacity-20 "
       >
-        {conversation.map((elem, index) => {
+        {displayedConversation.map((elem, index) => {
           return (
             <div
               key={index}
-              className="text-left flex flex-col items-center lg:mt-10"
+              className="text-left flex flex-col items-center lg:mt-5 mb-4"
             >
               <div className="w-4/5 lg:w-3/5 flex flex-col lg:ml-2">
                 {elem.User && (
@@ -177,7 +225,7 @@ const Chat = () => {
       </div>
 
       <div className="lg:w-2/3 flex items-center flex-col">
-        <div className="mb-5 mt-5 lg:mt-0">
+        <div className="mb-5 mt-5 lg:mt-3 pt-2 ">
           <button
             onClick={() => handlePreExisiting()}
             className="text-xl hover:text-red-500"
@@ -185,7 +233,7 @@ const Chat = () => {
             Include pre-existing conditions?
           </button>
         </div>
-        <div className="w-full lg:w-2/3 flex items-center justify-center">
+        <div className="w-full lg:w-2/3 flex items-center justify-center mb-3">
           {!recording && (
             <img
               onClick={() => startRecording()}

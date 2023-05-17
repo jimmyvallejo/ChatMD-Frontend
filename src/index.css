@@ -38,13 +38,13 @@ code {
 
 .convoContain::-webkit-scrollbar-track {
   background: #c7cfcb;
-  height: 90%;
+ 
 }
 
 .convoContain::-webkit-scrollbar-thumb {
-  background-color: #c7cfcb;
+  background-color: #928f8f;
   border-radius: 10px;
-  height: 90%;
+  
 }
 
 @media only screen and (max-width: 1000px) {
@@ -100,4 +100,16 @@ code {
 .profileHeader {
     background-image: url("../public/header.png");
     background-size: cover;
+}
+
+#input-with-image {
+  background-image: url("../public/search.png");
+  background-repeat: no-repeat;
+  background-position: left; 
+  padding-left: 30px; 
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-size: 16px 16px;
+  background-position: calc(0% + 5px) center; 
+  
 }
