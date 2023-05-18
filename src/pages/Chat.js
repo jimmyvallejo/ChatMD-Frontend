@@ -57,7 +57,7 @@ const Chat = () => {
       };
       handleMount();
     }
-  }, [authUser]);
+  }, [authUser, initial]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
