@@ -4,10 +4,9 @@ import { useState, useEffect, useContext, useRef } from "react";
 import { AuthContext } from "../context/auth.context";
 import { ChatContext } from "../context/chat.context";
 import { AudioContext } from "../context/audio.context";
-import { Comment } from "react-loader-spinner";
-import SearchBar from "../components/Searchbar";
 import ChatScreen from "../components/ChatScreen";
 import ChatInputs from "../components/ChatInputs";
+import ChatPanel from "../components/ChatPanel";
 
 const Chat = () => {
   const [conditions, setConditions] = useState([]);
@@ -167,16 +166,8 @@ useEffect(() => {
 
   return (
     <div className="flex w-screen">
-      <div className="mt-20 w-1/6 border-r-2 border-black">
-        <SearchBar query={query} setQuery={setQuery} />
-        <h3 className="text-sm ml-2 mt-5 text-slate-500">Archived Conversations</h3>
-        <div className="w-full h-20 border-slate-500 border-t-2 border-b-2 flex items-center">
-         <img className="w-9 ml-3" src="/conversation.png"></img>
-         <h1 className="ml-3 text-slate-600">I have a headache...</h1>
-        </div>
-      </div>
+      <ChatPanel query={query} setQuery={setQuery}  />
       <div className="flex flex-col justify-center max-h-screen h-screen items-center w-5/6">
-        
         <ChatScreen
           divRef={divRef}
           displayedConversation={displayedConversation}

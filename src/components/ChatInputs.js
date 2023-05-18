@@ -6,7 +6,7 @@ const ChatInputs = ({handlePreExisiting, handleSubmit, message, setMessage}) => 
    const {startRecording, stopRecording, recording} = useContext(AudioContext)
    
     return (
-     <div className="lg:w-2/3 flex items-center flex-col ">
+     <div className="lg:w-full flex items-center flex-col bg-gray-200 bg-opacity-50 border-t-2 border-slate-300">
        <div className="mb-5 mt-5 lg:mt-3 pt-2 ">
          <button
            onClick={() => handlePreExisiting()}
