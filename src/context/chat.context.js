@@ -9,6 +9,7 @@ const ChatProvider = ({ children }) => {
   const [initial, setInitial] = useState(null);
    const [message, setMessage] = useState("");
    const [reloadConvo, setReloadConvo] = useState(null)
+    const [selected, setSelected] = useState(null);
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -31,7 +32,7 @@ const ChatProvider = ({ children }) => {
 
   return (
     <ChatContext.Provider
-      value={{ conversation, setConversation, initial, setInitial, windowSize, message, setMessage, displayedConversation, setDisplayedConversation, reloadConvo, setReloadConvo }}
+      value={{ conversation, setConversation, initial, setInitial, windowSize, message, setMessage, displayedConversation, setDisplayedConversation, reloadConvo, setReloadConvo, selected, setSelected }}
     >
       {children}
     </ChatContext.Provider>
