@@ -48,28 +48,29 @@ code {
   
 }
 
-.chatPanel {
+.chatPanel, .chatSend {
    scrollbar-color: #c7cfcb #e0e0e0;
   scrollbar-width: thin;
 }
 
-.chatPanel::-webkit-scrollbar {
+.chatPanel::-webkit-scrollbar, .chatSend::-webkit-scrollbar {
   width: 5px;
   background-color: #c7cfcb;
   border-radius: 8px;
   height: 90%;
 }
 
-.chatPanel::-webkit-scrollbar-track {
+.chatPanel::-webkit-scrollbar-track, .chatSend::-webkit-scrollbar-track {
   background: #c7cfcb;
  
 }
 
-.chatPanel::-webkit-scrollbar-thumb {
+.chatPanel::-webkit-scrollbar-thumb, .chatSend::-webkit-scrollbar-thumb {
   background-color: #928f8f;
   border-radius: 10px;
-  
 }
+
+
 
 @media only screen and (max-width: 1000px) {
   .convoContain {

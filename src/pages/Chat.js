@@ -28,7 +28,7 @@ const Chat = () => {
     setDisplayedConversation,
   } = useContext(ChatContext);
 
-  const { response, recording, startRecording, stopRecording } =
+  const { response, recording, } =
     useContext(AudioContext);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Chat = () => {
         try {
           setLoading(true);
           const chat = await axios.post(`${baseUrl}/chat`, {
-            message: `Address me as ${authUser.name} I need help with an ailment or illness bothering me, ask me about my symptoms or where im experiencing pain`,
+            message: `Address me as ${authUser.name} I need help with an ailment or illness bothering me, ask me about my symptoms or where im experiencing pain, address me as if you are a doctor that just walked into the room.`,
           });
           const messageObject = {
             ChatMD: chat.data.ChatMD.content,
@@ -165,8 +165,8 @@ useEffect(() => {
 }, [query, conversation]);
 
   return (
-    <div className="flex w-screen">
-      <ChatPanel query={query} setQuery={setQuery}  />
+    <div className="flex w-screen max-h-screen h-screen">
+      <ChatPanel query={query} setQuery={setQuery} />
       <div className="flex flex-col justify-center max-h-screen h-screen items-center w-5/6">
         <ChatScreen
           divRef={divRef}

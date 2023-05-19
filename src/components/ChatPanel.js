@@ -13,7 +13,7 @@ const ChatPanel = ({ query, setQuery }) => {
  let { id } = useParams();
 
  const [discussion, setDiscussion] = useState([])
- const {setConversation, setDisplayedConversation, initial, setInitial} = useContext(ChatContext)
+ const {setConversation, setDisplayedConversation, initial, setInitial, reloadConvo} = useContext(ChatContext)
 
  const handleClick = () => {
     setConversation([])
@@ -29,14 +29,15 @@ const ChatPanel = ({ query, setQuery }) => {
        console.log(result.data.conversations)
        setDiscussion(result.data.conversations)
      } catch (error) {
-     }
+      console.log(error)
+    }
    };
 
    fetchData();
- }, []);
+ }, [reloadConvo]);
     
  return (
-   <div className=" chatPanel mt-20 w-1/6 border-r-2 border-slate-300 bg-gray-200 bg-opacity-50 overflow-y-scroll">
+   <div className=" h-100% chatPanel mt-20 w-1/6 border-r-2 border-slate-300 bg-gray-200 bg-opacity-50 overflow-y-scroll">
      <SearchBar query={query} setQuery={setQuery} />
      <div
        className="w-full h-20 border-slate-500 border-t-2 border-r-2 border-b-2 flex items-center cursor-pointer mt-3"
