@@ -6,6 +6,7 @@ const ChatScreen = ({divRef, displayedConversation, authUser, loading, conversat
         ref={divRef}
         className="convoContain flex flex-col bg-blue-200 bg-opacity-20 w-full "
       >
+        
         {displayedConversation.map((elem, index) => {
           return (
             <div

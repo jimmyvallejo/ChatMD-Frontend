@@ -59,8 +59,8 @@ const Chat = () => {
     }
   }, [authUser, initial]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    
     try {
       setLoading(true);
       const chat = await axios.post(`${baseUrl}/chat`, { message: message });

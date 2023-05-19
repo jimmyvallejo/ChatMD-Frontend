@@ -55,7 +55,7 @@ const ChatPanel = ({ query, setQuery }) => {
      {discussion.length > 0 ? (
        <ArchivedConvo discussion={discussion} />
      ) : (
-       <h1>No saved conversations...</h1>
+       <h1 className="ml-1.5 mt-2 text-sm underline">No saved conversations...</h1>
      )}
    </div>
  );

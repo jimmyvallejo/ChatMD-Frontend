@@ -2,17 +2,22 @@ import { Link } from "react-router-dom"
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { ChatContext } from "../context/chat.context";
 
 
 
 const Navbar = () => {
    const {authUser, changeLogout} = useContext(AuthContext)
+   const { initial, setInitial, setConversation, setDisplayedConversation} = useContext(ChatContext)
   const navigate = useNavigate();
     
   const handleLogout = async () => {
      try {
        await navigate(`/`); 
        changeLogout();
+       setInitial(null)
+       setConversation([])
+       setDisplayedConversation([])
   }   catch{
       console.log("error logging out")
   }
