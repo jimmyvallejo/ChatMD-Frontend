@@ -1,7 +1,25 @@
 import { Comment } from "react-loader-spinner";
+import { useEffect,} from "react";
 
-const ChatScreen = ({divRef, displayedConversation, authUser, loading, conversation}) => {
-    return (
+
+const ChatScreen = ({divRef, displayedConversation, authUser, loading, conversation, setMessage}) => {
+    
+
+
+  const scrollToBottom = () => {
+    if (divRef.current) {
+      divRef.current.scrollTo({
+        top: divRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+      useEffect(() => {
+        scrollToBottom();
+      }, [conversation, loading]);
+
+  
+  return (
       <div
         ref={divRef}
         className="convoContain flex flex-col bg-blue-200 bg-opacity-20 w-full "

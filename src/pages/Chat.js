@@ -3,7 +3,6 @@ import { baseUrl } from "../services/baseUrl";
 import { useState, useEffect, useContext, useRef } from "react";
 import { AuthContext } from "../context/auth.context";
 import { ChatContext } from "../context/chat.context";
-import { AudioContext } from "../context/audio.context";
 import ChatScreen from "../components/ChatScreen";
 import ChatInputs from "../components/ChatInputs";
 import ChatPanel from "../components/ChatPanel";
@@ -28,8 +27,6 @@ const Chat = () => {
     setDisplayedConversation,
   } = useContext(ChatContext);
 
-  const { response, recording, } =
-    useContext(AudioContext);
 
   useEffect(() => {
     if (!initial) {
@@ -59,25 +56,7 @@ const Chat = () => {
     }
   }, [authUser, initial]);
 
-  const handleSubmit = async () => {
-    
-    try {
-      setLoading(true);
-      const chat = await axios.post(`${baseUrl}/chat`, { message: message });
-      const messageObject = {
-        User: chat.data.User,
-        ChatMD: chat.data.ChatMD.content,
-      };
-      setConversation((prevState) => [...prevState, messageObject]);
-      setDisplayedConversation((prevState) => [...prevState, messageObject]);
-      setMessage("");
-      setLoading(false);
-      console.log("AuthUser:", authUser);
-    } catch {
-      console.log("Error sending message");
-      setLoading(!loading);
-    }
-  };
+
 
   useEffect(() => {
     console.log(conversation);
@@ -96,73 +75,18 @@ const Chat = () => {
     }
   };
 
-  const handlePreExisiting = async () => {
-    try {
-      setLoading(true);
-      const chat = await axios.post(`${baseUrl}/chat`, {
-        message: `Please take into account I suffer from ${conditions.join(
-          "/ "
-        )}. as pre-existing conditions in your next responses, you do not need to respond to this directly just state you understand.`,
-      });
-      const messageObject = {
-        User: chat.data.User.slice(0, -121),
-        ChatMD: chat.data.ChatMD.content,
-      };
-      setConversation((prevState) => [...prevState, messageObject]);
-      setDisplayedConversation((prevState) => [...prevState, messageObject]);
-      setMessage("");
-      setLoading(false);
-      console.log("AuthUser:", authUser);
-    } catch {
-      console.log("Error sending message");
-      setLoading(!loading);
-    }
-  };
+
 
   useEffect(() => {
     if(authUser)
     conditionsEdit();
   }, [authUser]);
 
-  const scrollToBottom = () => {
-    if (divRef.current) {
-      divRef.current.scrollTo({
-        top: divRef.current.scrollHeight,
-        behavior: "smooth",
-      });
-    }
-  };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [conversation, loading]);
 
-  useEffect(() => {
-    if (recording === false) {
-      setMessage(response);
-    }
-  }, [recording]);
 
-useEffect(() => {
-  let filtered;
 
-  if (query) {
-    const searchQuery = query.toLowerCase();
 
-    filtered = conversation.filter((elem) => {
-      console.log(elem)
-      console.log(query)
-      const chatMD = elem.ChatMD ? elem.ChatMD.toLowerCase() : "";
-      const user = elem.User ? elem.User.toLowerCase() : "";
-
-      return chatMD.includes(searchQuery) || user.includes(searchQuery);
-    });
-  } else {
-    filtered = [...conversation];
-  }
-
-  setDisplayedConversation(filtered);
-}, [query, conversation]);
 
   return (
     <div className="flex w-screen max-h-screen h-screen">
@@ -174,12 +98,14 @@ useEffect(() => {
           conversation={conversation}
           authUser={authUser}
           loading={loading}
+          setMessage={setMessage}
         />
         <ChatInputs
-          handlePreExisiting={handlePreExisiting}
-          handleSubmit={handleSubmit}
           message={message}
           setMessage={setMessage}
+          setLoading={setLoading}
+          conditions={conditions}
+          loading={loading}
         />
       </div>
     </div>

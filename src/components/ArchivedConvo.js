@@ -13,6 +13,31 @@ const ArchivedConvo = ({ discussion }) => {
     setDisplayedConversation(elem.discussion.dialogue)
    }
   
+const handleTime = (timestamp) => {
+  const createdAt = new Date(timestamp);
+  const currentDate = new Date();
+  const timeDiff = Math.abs(currentDate.getTime() - createdAt.getTime());
+  const hoursAgo = Math.floor(timeDiff / (1000 * 60 * 60));
+  let days = Math.floor(hoursAgo / 24);
+  let hours = hoursAgo % 24;
+
+  let timeString = "";
+
+  if (days > 0) {
+    timeString += days === 1 ? `${days} day ` : `${days} days `;
+  }
+
+  if(hours === 0){
+    return "0 hr's"
+  }
+
+  if (hours > 0) {
+    timeString += hours === 1 ? `${hours} hr` : `${hours} hr's`;
+  }
+
+  return timeString;
+};
+
     return (
     <>
       {discussion.map((elem, index) => (
@@ -27,6 +52,7 @@ const ArchivedConvo = ({ discussion }) => {
             alt="Conversation"
           ></img>
           <h1 className="ml-3 text-slate-600">{elem.discussion.title}...</h1>
+          <h3 className="ml-3 text-xs text-slate-600"> {handleTime(elem.createdAt)} </h3>
         </div>
       ))}
     </>

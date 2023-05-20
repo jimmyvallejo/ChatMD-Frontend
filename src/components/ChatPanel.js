@@ -13,10 +13,9 @@ const ChatPanel = ({ query, setQuery }) => {
   const {
     setConversation,
     setDisplayedConversation,
-    initial,
     setInitial,
     reloadConvo,
-    selected,
+    conversation,
     setSelected,
   } = useContext(ChatContext);
 
@@ -41,17 +40,38 @@ const ChatPanel = ({ query, setQuery }) => {
     fetchData();
   }, [reloadConvo]);
 
+  useEffect(() => {
+    let filtered;
+
+    if (query) {
+      const searchQuery = query.toLowerCase();
+
+      filtered = conversation.filter((elem) => {
+        console.log(elem);
+        console.log(query);
+        const chatMD = elem.ChatMD ? elem.ChatMD.toLowerCase() : "";
+        const user = elem.User ? elem.User.toLowerCase() : "";
+
+        return chatMD.includes(searchQuery) || user.includes(searchQuery);
+      });
+    } else {
+      filtered = [...conversation];
+    }
+
+    setDisplayedConversation(filtered);
+  }, [query, conversation]);
+
   return (
-    <div className=" h-100% chatPanel mt-20 w-1/6 border-r-2 border-slate-300 bg-gray-200 bg-opacity-50 overflow-y-scroll">
+    <div className=" h-100% chatPanel mt-20 w-1/6  border-slate-300 bg-gray-200 bg-opacity-50 overflow-y-scroll">
       <SearchBar query={query} setQuery={setQuery} />
       <div
-        className="w-full h-20 border-slate-500 border-t-2 border-r-2 border-b-2 flex items-center cursor-pointer mt-3"
+        className="w-full h-20 border-slate-400 border-2 flex items-center cursor-pointer mt-3 rounded-md"
         onClick={() => handleClick()}
       >
-        <img className="w-9 ml-3" src="/plus.png" alt="plus sign"></img>
+        <img className="w-9 ml-3" src="/add.png" alt="plus sign"></img>
         <h1 className="ml-4 text-slate-600 mt-1">New Chat</h1>
       </div>
-      <h3 className="text-sm ml-2 mt-5 text-slate-500">
+      <h3 className="text-sm ml-2 mt-5 mb-2 text-slate-500 text-left">
         Archived Conversations
       </h3>
       {discussion.length > 0 ? (
