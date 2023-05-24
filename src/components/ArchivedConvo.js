@@ -43,7 +43,7 @@ const handleTime = (timestamp) => {
       {discussion.map((elem, index) => (
         <div
           key={index}
-          className={`w-full h-20 border-slate-500 border-t-1 border-r-1 border-b-1 flex items-center cursor-pointer  hover:bg-gray-200  ${selected === index ? "bg-gray-300 bg-opacity-90 hover:bg-opacity-100" : ""}`}
+          className={`w-full h-20 border-slate-500 border-b border-1 flex items-center cursor-pointer  hover:bg-gray-200  ${selected === index ? "bg-gray-300 bg-opacity-90 hover:bg-opacity-100" : ""}`}
           onClick={() => handleClick(elem, index)}
         >
           <img

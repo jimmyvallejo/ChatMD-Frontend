@@ -22,14 +22,14 @@ const ChatScreen = ({divRef, displayedConversation, authUser, loading, conversat
   return (
       <div
         ref={divRef}
-        className="convoContain flex flex-col bg-blue-200 bg-opacity-20 w-full "
+        className="convoContain flex flex-col bg-gray-200 bg-opacity-20 w-full  "
       >
         
         {displayedConversation.map((elem, index) => {
           return (
             <div
               key={index}
-              className="text-left flex flex-col items-center lg:mt-5 mb-4"
+              className="text-left flex flex-col items-center lg:mt-5 mb-4 "
             >
               <div className="w-4/5 lg:w-3/5 flex flex-col lg:ml-2">
                 {elem.User && (

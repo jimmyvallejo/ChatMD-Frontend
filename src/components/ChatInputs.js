@@ -95,20 +95,20 @@ const ChatInputs = ({ message, setMessage, setLoading, conditions, loading}) => 
          };
    
     return (
-      <div className="lg:w-full flex items-center flex-col bg-gray-200 bg-opacity-50 border-t-2 border-slate-300">
-        <div className="mb-5 mt-5 lg:mt-3 pt-2 flex justify-around w-1/2 ">
+      <div className="lg:w-full w-full flex items-center flex-col bg-gray-200 bg-opacity-10 border-t-2 border-slate-300">
+        <div className="mb-5 mt-5 lg:mt-3 pt-2 flex lg:justify-around justify-center lg:w-1/2 ">
           <button
             onClick={() => handlePreExisiting()}
-            className="text-xl hover:text-red-500"
+            className="text-xl hover:text-red-500 text-gray-600"
           >
             Include pre-existing conditions?
           </button>
         </div>
-        <div className="w-2/3 flex items-center justify-around mb-3">
+        <div className="lg:w-2/3 w-full flex items-center lg:justify-around  mb-3  ">
           {!recording && (
             <img
               onClick={() => startRecording()}
-              className="lg:w-12 w-9 cursor-pointer"
+              className="lg:w-12 w-9 ml-5 relative lg:static left-2 cursor-pointer"
               src="/rec-button.png"
               alt="start record"
             ></img>
@@ -116,18 +116,18 @@ const ChatInputs = ({ message, setMessage, setLoading, conditions, loading}) => 
           {recording && (
             <img
               onClick={() => stopRecording()}
-              className="w-12 cursor-pointer"
+              className="lg:w-12 w-9 ml-5 relative lg:static left-2 cursor-pointer"
               src="/stop-button.png"
               alt="stop record"
             ></img>
           )}
           <form
             onSubmit={handleSubmit}
-            className="flex items-center w-full  lg:ml-5"
+            className="flex items-center w-full ml-5  justify-center lg:justify-normal "
           >
-            <div className="lg:w-full items-center flex">
+            <div className="lg:w-full items-center flex  ">
               <textarea
-                className="chatSend border-2 border-black rounded  w-full pb-10 pl-3 lg:pr-11 "
+                className="chatSend border-2 border-gray-400 rounded-lg lg:ml-3  w-full pb-10 pl-3 lg:pr-11  pr-10 "
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="How could I help you today?"
@@ -138,13 +138,13 @@ const ChatInputs = ({ message, setMessage, setLoading, conditions, loading}) => 
             <img
               onClick={() => handleSubmit()}
               src="/submit.png"
-              className="w-11 h-11 relative right-14 cursor-pointer"
+              className="lg:w-11 lg:h-11 w-7 relative lg:right-14 right-10 cursor-pointer"
               alt="submit"
             ></img>
           </form>
           <button
             onClick={() => handleSave()}
-            className="text-xl hover:text-red-500 relative right-10 "
+            className="text-xl hover:text-red-500 relative lg:right-10 right-5 text-gray-600 "
           >
             Save Chat
           </button>

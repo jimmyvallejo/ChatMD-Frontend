@@ -14,6 +14,8 @@ const ChatProvider = ({ children }) => {
     width: window.innerWidth,
     height: window.innerHeight,
   });
+  const [searches, setSearches] = useState([]);
+  const [activeSearch, setActiveSearch] = useState([])
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,7 +34,7 @@ const ChatProvider = ({ children }) => {
 
   return (
     <ChatContext.Provider
-      value={{ conversation, setConversation, initial, setInitial, windowSize, message, setMessage, displayedConversation, setDisplayedConversation, reloadConvo, setReloadConvo, selected, setSelected }}
+      value={{ conversation, setConversation, initial, setInitial, windowSize, message, setMessage, displayedConversation, setDisplayedConversation, reloadConvo, setReloadConvo, selected, setSelected, searches, setSearches, activeSearch, setActiveSearch }}
     >
       {children}
     </ChatContext.Provider>

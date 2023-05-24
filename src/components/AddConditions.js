@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { baseUrl } from "../services/baseUrl";
 import { AuthContext } from "../context/auth.context";
+import { TextField } from "@mui/material";
 
 const AddConditions = ({ isDisabled, authUser, id }) => {
   const [term, setTerm] = useState("");
@@ -81,7 +82,7 @@ const AddConditions = ({ isDisabled, authUser, id }) => {
   return (
     <div className="flex flex-col items-center">
       {isDisabled && (
-        <div className={results.length > 0 ? "border-2 border-black w-55" : ""}>
+        <div className={results.length > 0 ? "border-2 border-gray-400 w-55 mb-8 p-1" : ""}>
           <ul>
             {results.map((result, index) => (
               <div className="hover:bg-blue-200">
@@ -98,21 +99,23 @@ const AddConditions = ({ isDisabled, authUser, id }) => {
         </div>
       )}
       {isDisabled && (
-        <input
-          className="placeholder-gray-500  border-2 border-slate-400 rounded-md pl-1  mt-5"
+        <TextField
+          id="standard-basic"
+          label="Search Conditions..."
+          variant="standard"
           type="text"
           onChange={handleChange}
           placeholder="Search Conditions..."
         />
       )}
       {isDisabled && (
-        <div className="flex flex-row items-center justify-center grow">
-          <div className="border-2 border-slate-400 mb-5 mt-4 px-2  flex flex-row max-w-2xl mr-1 flex-wrap">
+        <div className="flex lg:flex-row flex-col items-center justify-center grow mt-4">
+          <div className="border-2 border-slate-400 mb-5 mt-4 px-2  flex lg:flex-row flex-col max-w-2xl mr-1 flex-wrap mt-4">
             {conditions.length > 0 ? (
               conditions.map((condition) => {
                 return (
-                  <div className="flex flex-row flex-wrap items-center justify-center mt-1 mb-1">
-                    <p className="mr-1">{condition}</p>
+                  <div className="flex flex-row flex-wrap items-center justify-start lg:justify-center mt-1 mb-1 ">
+                    <p className="mr-1 max-w-[90%] mt-1 lg:ml-1 ">{condition}</p>
                     <button
                       className="mr-1 bg-red-300 px-0.5"
                       onClick={() => handleDelete(condition)}
@@ -127,11 +130,11 @@ const AddConditions = ({ isDisabled, authUser, id }) => {
             )}
           </div>
           {conditions.length > 0 ? (
-            <div className="w-15">
+            <div className="lg:w-15">
               <img
                 alt="submit"
                 src="/submit.png"
-                className="w-8 h-8 mt-1 cursor-pointer hover:translate-x-1 transition duration-500 ease-in-out"
+                className="lg:w-8 lg:h-8 mt-1 cursor-pointer hover:translate-x-1 transition duration-500 ease-in-out w-12 h-12"
                 onClick={() => handleConditionSubmit()}
               ></img>
             </div>

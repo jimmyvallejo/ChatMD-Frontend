@@ -69,11 +69,10 @@ const Profile = () => {
 
 
   return (
-    <div className="w-screen lg:w-auto">
+    <div className="w-screen lg:w-auto bg-gray-200 bg-opacity-5">
       <div className="pt-20 w-4/6 lg:w-5/6 border-black m-auto">
-        <div className="flex border-b-2 border-gray-200 mb-3 items-center">
-          <img className="w-10 h-10" src="/medicine.png"></img>
-          <h1 className="text-3xl mt-5 mb-5 ml-3 text-slate-600">Profile</h1>
+        <div className="flex border-b-2 border-gray-200 mb-3 items-center justify-center lg:justify-normal mt-3 lg:mb-3">
+          <h1 className="text-3xl mt-5 mb-5 ml-3 text-slate-500">Profile</h1>
         </div>
         <ProfileHead
           authUser={authUser}
@@ -95,14 +94,15 @@ const Profile = () => {
               <span className="text-red-400">/Ailments</span>
             </h1>
           )}
-          <AddConditions
-            isDisabled={isDisabled}
-            authUser={authUser}
-            id={id}
-          />
+          <AddConditions isDisabled={isDisabled} authUser={authUser} id={id} />
         </div>
-         <ProfileInput authUser={authUser} isDisabled={isDisabled} edit={edit} handleEdit={handleEdit} />
-         <BackToTop />
+        <ProfileInput
+          authUser={authUser}
+          isDisabled={isDisabled}
+          edit={edit}
+          handleEdit={handleEdit}
+        />
+        <BackToTop />
       </div>
     </div>
   );

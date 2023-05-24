@@ -6,17 +6,13 @@
 body {
   margin: 0;
  font-family: 'Montserrat', sans-serif;
+ 
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-
-
-
-
 
 
 
@@ -27,6 +23,7 @@ code {
   scrollbar-color: #c7cfcb #e0e0e0;
   scrollbar-width: thin;
   margin-top: 80px;
+  
 
 }
 
@@ -48,34 +45,40 @@ code {
   
 }
 
-.chatPanel, .chatSend {
+.chatPanel, .chatSend, .provider {
    scrollbar-color: #c7cfcb #e0e0e0;
   scrollbar-width: thin;
+ 
 }
 
-.chatPanel::-webkit-scrollbar, .chatSend::-webkit-scrollbar {
+
+.chatPanel::-webkit-scrollbar, .chatSend::-webkit-scrollbar, .provider::-webkit-scrollbar {
   width: 5px;
   background-color: #c7cfcb;
   border-radius: 8px;
   height: 90%;
+  margin-top:  80px;
 }
 
-.chatPanel::-webkit-scrollbar-track, .chatSend::-webkit-scrollbar-track {
+.chatPanel::-webkit-scrollbar-track, .chatSend::-webkit-scrollbar-track, .provider::-webkit-scrollbar-track {
   background: #c7cfcb;
+  margin-top:  80px;
  
 }
 
-.chatPanel::-webkit-scrollbar-thumb, .chatSend::-webkit-scrollbar-thumb {
+.chatPanel::-webkit-scrollbar-thumb, .chatSend::-webkit-scrollbar-thumb, .provider::-webkit-scrollbar-thumb {
   background-color: #928f8f;
   border-radius: 10px;
+  margin-top:  80px;
 }
 
 
 
 @media only screen and (max-width: 1000px) {
   .convoContain {
-    width: 100%;
-    height: 70vh;
+   margin-top: 103px !important;
+    width: 100vw;
+    max-width: 100vw;
     display: flex;
     margin: auto;
     flex-direction: column;
@@ -137,4 +140,22 @@ code {
   background-size: 16px 16px;
   background-position: calc(0% + 5px) center; 
   
+}
+
+.provider {
+padding-top: 140px;
+  scrollbar-color: #c7cfcb #e0e0e0;
+  scrollbar-width: thin;
+  min-height: 100vh;
+}
+
+.providerSmall {
+  scrollbar-color: #c7cfcb #e0e0e0;
+  scrollbar-width: thin;
+  min-height: 100vh;
+}
+
+.blue {
+  color: #60A5FA;
+  font-weight: 700;
 }

@@ -89,9 +89,9 @@ const Chat = () => {
 
 
   return (
-    <div className="flex w-screen max-h-screen h-screen">
+    <div className="flex lg:flex-row flex-col w-screen max-h-screen h-screen">
       <ChatPanel query={query} setQuery={setQuery} />
-      <div className="flex flex-col justify-center max-h-screen h-screen items-center w-5/6">
+      <div className="flex flex-col justify-center max-h-screen h-screen items-center  lg:w-5/6">
         <ChatScreen
           divRef={divRef}
           displayedConversation={displayedConversation}
