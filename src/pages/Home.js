@@ -33,7 +33,7 @@ const Home = () => {
  
     return (
       <div className="flex w-screen h-screen  home justify-center lg:justify-normal">
-        <div className="w-4/6 h-full lg:pt-40 pt-20 bg-opacity-50 flex items-center flex-col ">
+        <div className="w-4/6 h-full lg:pt-40 bg-opacity-50 flex items-center flex-col ">
           <div className="mt-40 flex items-left flex-col">
             <h1 className="lg:text-7xl text-6xl text-blue-400 font-bold tracking-wide">
               Welcome <span className="text-gray-400">to</span> <br></br>{" "}
