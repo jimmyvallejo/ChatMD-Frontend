@@ -48,7 +48,7 @@ const ProfileHead = ({authUser, windowSize, handleDisable, isDisabled, changeLog
           {windowSize > 600 && (
             <h1 className="ml-7 text-center text-xl">{authUser.name}</h1>
           )}
-          <div className="flex mt-20 lg:mt-0 lg:mr-0 lg:ml-80 lg:pl-80 mr-10">
+          <div className="flex mt-20 lg:mt-0 lg:mr-0 lg:ml-80 lg:pl-80 mr-8">
             <button
               onClick={handleDisable}
               className={
