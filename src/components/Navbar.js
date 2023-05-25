@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 
 const Navbar = () => {
 
-
+   const location = useLocation()
 
   const { authUser, changeLogout } = useContext(AuthContext);
   const { setInitial, setConversation, setDisplayedConversation } =
@@ -41,7 +41,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`flex justify-center border-b-2 border-slate-200 h-20 fixed w-screen z-40 bg-white bg-opacity-97`}
+      className={`flex justify-center border-b-2 border-slate-200 h-20 fixed w-screen z-40 bg-white ${location.pathname !== "/" ? "bg-opacity-97" : "bg-opacity-0"}`}
     >
       <div></div>
       <div className="flex flex-col items-center justify-center  ">
@@ -78,7 +78,7 @@ const Navbar = () => {
           {authUser && (
             <Link
               className={`mr-10 pl-1  mt-2 blue hover:text-gray-600`}
-              to={`/providers123`}
+              to={`/providers`}
             >
               Providers
             </Link>
@@ -149,7 +149,7 @@ const Navbar = () => {
                 {authUser && (
                   <Link
                     className={`ml-5 mt-7 blue hover:text-blue-600 flex`}
-                    to={`/providers123`}
+                    to={`/providers`}
                   >
                     <img src="/stethoscope.png" className="w-8"></img>
                     <h1 className="ml-2">Providers</h1>

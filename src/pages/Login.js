@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { baseUrl } from "../services/baseUrl";
 import axios from "axios";
+import  TextField  from "@mui/material/TextField";
 
 const Login = () => {
   const { authenticateUser } = useContext(AuthContext);
@@ -35,13 +36,16 @@ const Login = () => {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center pb-20">
-      <h1 className="text-center mb-9">Login</h1>
+      <h1 className="text-center mb-9 text-5xl text-gray-600 text-semibold">Login</h1>
       <form
         className="flex flex-col items-center justify-center"
         onSubmit={handleSubmit}
       >
-        <label>Email</label>
-        <input
+        
+        <TextField
+          id="outlined-basic"
+          label="Email"
+          variant="outlined"
           className="border-2 border-black"
           type="email"
           name="email"
@@ -49,19 +53,22 @@ const Login = () => {
           onChange={handleChange}
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           required
-        ></input>
-        <label>Password</label>
-        <input
+        />
+        
+        <TextField
+          label="Password"
           className="border-2 border-black mb-10"
           type="password"
           name="password"
           value={login.password}
           onChange={handleChange}
           required
-        ></input>
-        <button className="signupBtn" type="submit">
+          sx={{marginTop:2}}
+        />
+  
+        <button className="signupBtn mt-5" type="submit">
           <img
-            className="w-10"
+            className="w-12 h-12"
             src="https://cdn-icons-png.flaticon.com/512/854/854184.png"
           ></img>
         </button>

@@ -97,12 +97,12 @@ const ChatInputs = ({ message, setMessage, setLoading, conditions, loading}) => 
     return (
       <div className="lg:w-full w-full flex items-center flex-col bg-gray-200 bg-opacity-10 border-t-2 border-slate-300">
         <div className="mb-5 mt-5 lg:mt-3 pt-2 flex lg:justify-around justify-center lg:w-1/2 ">
-          <button
+          {authUser && authUser.preconditions.length > 0 && <button
             onClick={() => handlePreExisiting()}
             className="text-xl hover:text-red-500 text-gray-600"
           >
             Include pre-existing conditions?
-          </button>
+          </button>}
         </div>
         <div className="lg:w-2/3 w-full flex items-center lg:justify-around  mb-3  ">
           {!recording && (

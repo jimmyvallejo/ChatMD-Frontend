@@ -107,7 +107,7 @@ const { width } = useWindowDimensions();
 
   return (
     <div className={` ${activeSearch.length === 0 ? "providerSmall" : "provider" } flex flex-col  items-center justify-center bg-white`}>
-      <h1 className="text-3xl font-semibold mb-5">
+      <h1 className="text-3xl font-semibold mb-5 ml-1">
         <span className="text-blue-500">Search</span>{" "}
         <span className="text-slate-500">For</span>{" "}
         <span className="text-red-400">Providers</span>
@@ -124,7 +124,7 @@ const { width } = useWindowDimensions();
           sx={{
             width: width > mobileService ? "50%" : "70%",
             backgroundColor: "white",
-            marginRight: 1,
+            marginRight:1,
             ".MuiOutlinedInput-root": {
               fieldset: {
                 borderColor: "gray",
@@ -219,7 +219,7 @@ const { width } = useWindowDimensions();
           })}
         </div>
       ) : (
-        <div className="mt-20 mr-5">
+        <div className="mt-20 ">
           {!loading && <h3>Search to see results...</h3>}
           {loading && <h3>Loading...</h3>}
         </div>
