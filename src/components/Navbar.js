@@ -41,7 +41,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`flex justify-center border-b-2 border-slate-200 h-20 fixed w-screen z-40 bg-white ${location.pathname !== "/" ? "bg-opacity-97" : "bg-opacity-0"}`}
+      className={`flex justify-center border-b-2 border-slate-200 h-20 fixed w-screen z-40 bg-white ${location.pathname !== "/" ? "bg-opacity-97" : "lg:bg-opacity-0 bg-opacity-100"}`}
     >
       <div></div>
       <div className="flex flex-col items-center justify-center  ">
