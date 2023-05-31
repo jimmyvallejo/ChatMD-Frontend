@@ -4,6 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import { baseUrl } from "../services/baseUrl";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 const Signup = () => {
     
@@ -47,7 +48,7 @@ const handleSubmit = async (e) => {
     
     return (
       <div className="h-screen flex flex-col items-center justify-center">
-        <h1 className="text-center mb-10 text-5xl text-gray-600">Signup</h1>
+        <h1 className="text-center mb-10 text-5xl text-blue-400 font-semibold">Signup</h1>
         <form
           className="flex flex-col items-center justify-center"
           onSubmit={handleSubmit}
@@ -74,7 +75,7 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
             required
           />
-          <div className="flex flex-row">
+          <div className="flex flex-row ml-12">
             <div className="flex flex-col items-center w-60">
               <TextField
                 sx={{ marginTop: 2 }}
@@ -110,12 +111,9 @@ const handleSubmit = async (e) => {
             onChange={handleChange}
             required
           />
-          <button className="signupBtn" type="submit">
-            <img
-              className="w-12 mt-10"
-              src="https://cdn-icons-png.flaticon.com/512/854/854184.png"
-            ></img>
-          </button>
+          <Button sx={{ marginTop: 3 }} type="submit" variant="contained">
+            Continue
+          </Button>
           {error && <p>Error: {error}</p>}
         </form>
       </div>
