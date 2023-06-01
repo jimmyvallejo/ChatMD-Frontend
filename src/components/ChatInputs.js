@@ -63,7 +63,6 @@ const ChatInputs = ({ message, setMessage, setLoading, conditions, loading}) => 
            ]);
            setMessage("");
            setLoading(false);
-           console.log("AuthUser:", authUser);
          } catch {
            console.log("Error sending message");
            setLoading(!loading);
@@ -87,7 +86,6 @@ const ChatInputs = ({ message, setMessage, setLoading, conditions, loading}) => 
              ]);
              setMessage("");
              setLoading(false);
-             console.log("AuthUser:", authUser);
            } catch {
              console.log("Error sending message");
              setLoading(!loading);

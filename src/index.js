@@ -7,21 +7,22 @@ import { HashRouter } from "react-router-dom";
 import { AuthProvider } from './context/auth.context';
 import { ChatProvider } from './context/chat.context';
 import { AudioProvider } from './context/audio.context';
+import { SearchProvider } from './context/search.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <HashRouter>
     <AuthProvider>
       <ChatProvider>
-        <AudioProvider>
-          <App />
-        </AudioProvider>
+        <SearchProvider>
+          <AudioProvider>
+            <App />
+          </AudioProvider>
+        </SearchProvider>
       </ChatProvider>
     </AuthProvider>
   </HashRouter>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();

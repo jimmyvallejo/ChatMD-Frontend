@@ -1,10 +1,9 @@
 import axios from "axios";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { baseUrl } from "../services/baseUrl";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { ChatContext } from "../context/chat.context";
-import { useNavigate } from "react-router-dom";
 import ProfileHead from "../components/ProfileHead";
 import PendingChanges from "../components/PendingChanges";
 import AddConditions from "../components/AddConditions";
@@ -12,8 +11,6 @@ import ProfileInput from "../components/ProfileInputs";
 import BackToTop from "../components/BackToTop";
 
 const Profile = () => {
-  
-  
   const [isDisabled, setDisabled] = useState(true);
   const [edit, setEdit] = useState({
     username: "",
@@ -23,11 +20,9 @@ const Profile = () => {
   });
 
   const { authUser, changeLogout, authenticateUser } = useContext(AuthContext);
-   const { windowSize } = useContext(ChatContext);
+  const { windowSize } = useContext(ChatContext);
 
   let { id } = useParams();
-
-
 
   const handleDisable = () => {
     setDisabled(!isDisabled);
@@ -49,7 +44,6 @@ const Profile = () => {
         `${baseUrl}/users/profile-edit/${id}`,
         edit
       );
-      console.log(result.data);
       localStorage.clear();
       const login = await axios.post(`${baseUrl}/auth/login`, {
         email: edit.email,
@@ -63,10 +57,6 @@ const Profile = () => {
       console.log(err);
     }
   };
-
-
-
-
 
   return (
     <div className="w-screen lg:w-auto bg-gray-200 bg-opacity-5">

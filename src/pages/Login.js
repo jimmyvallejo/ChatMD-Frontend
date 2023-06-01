@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { baseUrl } from "../services/baseUrl";
 import axios from "axios";
-import  TextField  from "@mui/material/TextField";
+import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 const Login = () => {
   const { authenticateUser } = useContext(AuthContext);
   const [error, setError] = useState(null);
-  const [login, setLogin] = useState({email: "", password: "",});
+  const [login, setLogin] = useState({ email: "", password: "" });
 
   const navigate = useNavigate();
 
@@ -67,11 +67,13 @@ const Login = () => {
           required
           sx={{ marginTop: 2 }}
         />
-        <Button sx={{marginTop:3}} type="submit" variant="contained">Continue</Button>
+        <Button sx={{ marginTop: 3 }} type="submit" variant="contained">
+          Continue
+        </Button>
         {error && <p>Error: {error}</p>}
       </form>
     </div>
   );
 };
 
-export default Login
+export default Login;

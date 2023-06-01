@@ -45,7 +45,6 @@ const ChatPanel = ({ query, setQuery }) => {
     const fetchData = async () => {
       try {
         const result = await axios.get(`${baseUrl}/users/${id}`);
-        console.log(result.data.conversations);
         setDiscussion(result.data.conversations);
       } catch (error) {
         console.log(error);
@@ -62,8 +61,6 @@ const ChatPanel = ({ query, setQuery }) => {
       const searchQuery = query.toLowerCase();
 
       filtered = conversation.filter((elem) => {
-        console.log(elem);
-        console.log(query);
         const chatMD = elem.ChatMD ? elem.ChatMD.toLowerCase() : "";
         const user = elem.User ? elem.User.toLowerCase() : "";
 
@@ -106,7 +103,6 @@ const ChatPanel = ({ query, setQuery }) => {
             onClick={toggleDrawer("top", true)}
           >
             Chat Menu
-            {/* <img src="/hamburger.png" className="w-9 ml-5"></img> */}
           </Button>
           <SwipeableDrawer
             anchor="top"

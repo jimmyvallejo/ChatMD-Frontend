@@ -27,7 +27,6 @@ const ProfileHead = ({authUser, windowSize, handleDisable, isDisabled, changeLog
             const deleteProfile = await axios.get(
               `${baseUrl}/users/profile/delete/${id}`
             );
-            console.log(deleteProfile.data);
             changeLogout();
             navigate("/signup");
           } catch (err) {

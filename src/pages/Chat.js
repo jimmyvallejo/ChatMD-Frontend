@@ -58,11 +58,6 @@ const Chat = () => {
 
 
 
-  useEffect(() => {
-    console.log(conversation);
-    console.log(authUser);
-  }, [conversation]);
-
   const conditionsEdit = () => {
     let set = new Set();
     if (authUser) {
