@@ -36,7 +36,7 @@ const SearchProviders = () => {
   
     return (
    
-      <div className="flex lg:w-4/6 pl-10 w-full  flex-row items-center justify-center ">
+      <div className="flex lg:w-4/6 lg:pl-10 w-full  flex-row items-center justify-center ">
         <img
           onClick={() => handleSubmit()}
           className="lg:h-10 lg:w-10 w-8 lg:ml-1 cursor-pointer relative lg:left-12 left-10 z-50"
