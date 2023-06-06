@@ -41,14 +41,20 @@ const Navbar = () => {
 
   return (
     <div
-      className={`flex justify-center border-b-2 border-slate-200 h-20 fixed w-screen z-40 bg-white ${location.pathname !== "/" ? "bg-opacity-97" : "lg:bg-opacity-0 bg-opacity-100"}`}
+      className={`flex justify-center border-b-2 border-slate-200 h-20 fixed w-screen z-40 bg-white ${
+        location.pathname !== "/"
+          ? "bg-opacity-97"
+          : "lg:bg-opacity-0 bg-opacity-100"
+      }`}
     >
       <div></div>
       <div className="flex flex-col items-center justify-center  ">
-        <h1 className="text-5xl">
-          <span className="text-blue-400">Chat</span>
-          <span className="text-red-400">MD</span>
-        </h1>
+        <Link to={`/`}>
+          <h1 className="text-5xl">
+            <span className="text-blue-400">Chat</span>
+            <span className="text-red-400">MD</span>
+          </h1>
+        </Link>
       </div>
 
       {window.innerWidth > mobileService ? (
@@ -124,7 +130,10 @@ const Navbar = () => {
               onOpen={toggleDrawer("right", true)}
             >
               <div className="justify-center flex flex-col items-center w-60 text-xl text-gray-600">
-                <Link className={`mr-5 mt-7 blue hover:text-blue-600 flex`} to={`/`}>
+                <Link
+                  className={`mr-5 mt-7 blue hover:text-blue-600 flex`}
+                  to={`/`}
+                >
                   <img src="/home-button.png" className="w-8"></img>
                   <h1 className="ml-3">Home</h1>
                 </Link>

@@ -68,7 +68,7 @@ const ProviderResults = () => {
             })}
           </div>
         ) : (
-          <div className="mt-20 text-center ">
+          <div className="mt-20 text-center">
             {!loading && <h3>Search to see results...</h3>}
             {loading && <h3>Loading...</h3>}
           </div>
