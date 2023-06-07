@@ -62,7 +62,7 @@ const Profile = () => {
     <div className="w-screen lg:w-auto bg-gray-200 bg-opacity-5">
       <div className="pt-20 w-4/6 lg:w-5/6 border-black m-auto">
         <div className="flex border-b-2 border-gray-200 mb-3 items-center justify-center lg:justify-normal mt-3 lg:mb-3">
-          <h1 className="text-3xl mt-5 mb-5 ml-3 text-slate-500">Profile</h1>
+          <h1 className="text-3xl mt-5 mb-5 lg:ml-3 text-slate-500">Profile</h1>
         </div>
         <ProfileHead
           authUser={authUser}
