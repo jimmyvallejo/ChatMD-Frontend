@@ -6,7 +6,7 @@ const Footer = () => {
 
     return (
       <div
-        className={`flex justify-center mb-5 text-slate-600 ${location.pathname.startsWith("/profile") && "mt-20 pt-5"}`}
+        className={`flex justify-center mb-5 text-slate-600 ${location.pathname.startsWith("/profile") && "mt-10 pt-5"}`}
       >
         <a href="https://github.com/jimmyvallejo" className="flex items-center">
           <img src="/github.png" className="w-5"></img>
