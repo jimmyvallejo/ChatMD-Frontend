@@ -170,7 +170,14 @@ padding-top: 140px;
 
 @media only screen and (max-width: 1500px) {
   .dp  {
-  right: 200px;
+  right: 300px;
+  width: 400px;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .dp  {
+    visibility: hidden;
   }
 }
 
@@ -181,4 +188,10 @@ padding-top: 140px;
   height: 70%;
   margin-top: 50px;
  
+}
+
+@media only screen and (max-width: 1250px) {
+  .robotdoc  {
+    visibility: hidden;
+  }
 }
