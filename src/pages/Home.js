@@ -10,10 +10,10 @@ import { Blocks } from "react-loader-spinner";
 const Home = () => {
   const { authUser, authenticateUser } = useContext(AuthContext);
 
-  const [login, setLogin] = useState({
+  const login = {
     email: "demouser@demo.com",
     password: "123",
-  });
+  };
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
