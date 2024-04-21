@@ -11,7 +11,7 @@ const Home = () => {
   const { authUser, authenticateUser } = useContext(AuthContext);
 
   const [login, setLogin] = useState({
-    email: "testnew1@test.com",
+    email: "demouser@demo.com",
     password: "123",
   });
   const [loading, setLoading] = useState(false);
